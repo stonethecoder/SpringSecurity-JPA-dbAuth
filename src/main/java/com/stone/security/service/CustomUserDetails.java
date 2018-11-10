@@ -22,6 +22,7 @@ public class CustomUserDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private User user;
 	
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
@@ -64,6 +65,11 @@ public class CustomUserDetails implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	public CustomUserDetails() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 }
