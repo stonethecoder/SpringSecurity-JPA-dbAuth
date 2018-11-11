@@ -1,4 +1,4 @@
-package com.stone.security.config;
+package com.stone.security.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

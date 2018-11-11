@@ -1,11 +1,11 @@
-package com.stone.security.repository;
+package com.stone.security.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.stone.security.model.User;
+import com.stone.security.api.model.User;
 
 public interface UserRepo extends JpaRepository<User, Integer> {
 
-	public User findByUsername(String username);
+	User findByUsername(String username);
 
 }

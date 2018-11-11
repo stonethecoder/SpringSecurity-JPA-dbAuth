@@ -1,4 +1,4 @@
-package com.stone.security.model;
+package com.stone.security.api.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

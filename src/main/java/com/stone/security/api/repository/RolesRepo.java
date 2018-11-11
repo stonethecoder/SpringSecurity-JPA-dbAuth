@@ -1,8 +1,8 @@
-package com.stone.security.repository;
+package com.stone.security.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.stone.security.model.Roles;
+import com.stone.security.api.model.Roles;
 
 public interface RolesRepo extends JpaRepository<Roles, Integer> {
 

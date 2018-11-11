@@ -1,4 +1,4 @@
-package com.stone.security.service;
+package com.stone.security.api.service;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.stone.security.model.User;
+import com.stone.security.api.model.User;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,9 +26,11 @@ public class CustomUserDetails implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
-		return user.getRoles().stream()
+		/*return user.getRoles().stream()
 			.map(role->new SimpleGrantedAuthority("ROLE_"+ role))
-			.collect(Collectors.toList());
+			.collect(Collectors.toList());*/
+		return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+		.collect(Collectors.toList());
 	}
 
 	@Override

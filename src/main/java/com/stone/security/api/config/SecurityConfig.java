@@ -1,4 +1,4 @@
-package com.stone.security.config;
+package com.stone.security.api.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,39 +11,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.stone.security.service.CustomUserDetailService;
-
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private UserDetailsService userDetailService;
-	
-	@Bean
-	public BCryptPasswordEncoder encode() {
-		return new BCryptPasswordEncoder();
-	}
-	
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		
-		http
-			.csrf().disable()
-			.httpBasic()
-			.and()
-			.authorizeRequests()
-			.antMatchers("/user/**").hasRole("USER")
-			.and().authorizeRequests()
-			.antMatchers("/admin/**").hasRole("ADMIN")
-			.anyRequest().authenticated()
-			.and()
-			.formLogin()
-			.permitAll();
-		
-			
-	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -51,6 +25,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(userDetailService).passwordEncoder(encode());
 		
 		
+	}
+	
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		
+		
+		http
+			.csrf().disable();
+		http
+			/*.authorizeRequests()
+			.antMatchers("/user/**")
+			.authenticated()
+			.anyRequest()
+			.hasRole("USER")
+			.and()*/
+			.authorizeRequests()
+			.antMatchers("/admin/**")
+			.authenticated()
+			.anyRequest()
+			.hasRole("ADMIN")
+			.and()
+			.formLogin()
+			.permitAll();
+		
+		
+			
+	}
+	
+	@Bean
+	public BCryptPasswordEncoder encode() {
+		return new BCryptPasswordEncoder();
 	}
 
 }

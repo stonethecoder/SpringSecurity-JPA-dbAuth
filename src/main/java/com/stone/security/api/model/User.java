@@ -1,4 +1,4 @@
-package com.stone.security.model;
+package com.stone.security.api.model;
 
 import java.util.Set;
 
@@ -31,8 +31,10 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
-	@OneToMany(cascade= CascadeType.ALL, fetch= FetchType.LAZY)
-	@JoinTable(name="user_roles",joinColumns= @JoinColumn(referencedColumnName= "user_id"), inverseJoinColumns= @JoinColumn(referencedColumnName="role_id"))
+	@OneToMany(cascade= CascadeType.ALL, fetch= FetchType.EAGER)
+	@JoinTable(name="user_roles",
+					joinColumns= @JoinColumn(referencedColumnName= "user_id"), 
+					inverseJoinColumns= @JoinColumn(referencedColumnName="role_id"))
 	private Set<Roles> roles;
 	
 	public User(int user_id, String username, String password, String email, Set<Roles> roles) {

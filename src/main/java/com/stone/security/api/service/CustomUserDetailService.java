@@ -1,4 +1,4 @@
-package com.stone.security.service;
+package com.stone.security.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.stone.security.model.User;
-import com.stone.security.repository.UserRepo;
+import com.stone.security.api.model.User;
+import com.stone.security.api.repository.UserRepo;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
