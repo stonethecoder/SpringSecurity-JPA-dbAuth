@@ -22,7 +22,7 @@ public class AdminController {
 	private BCryptPasswordEncoder encoder;
 	
 	@PostMapping("/add")
-	//@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String addUser(@RequestBody User user) {
 		String encodedPwd= encoder.encode(user.getPassword());
 		user.setPassword(encodedPwd);
@@ -31,7 +31,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/demo")
-	//@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String getDemo() {
 		return "Hi";
 	}
